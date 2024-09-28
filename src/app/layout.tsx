@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CopilotKit } from "@copilotkit/react-core";
+import "@copilotkit/react-ui/styles.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,15 +28,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <CopilotKit publicApiKey={process.env.COPILOTKIT_PUBLIC_KEY}>
-
+    // <CopilotKit publicApiKey={process.env.COPILOTKIT_PUBLIC_KEY}>
+    <CopilotKit runtimeUrl="/api/copilotkit">
+      <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
         >
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            disableTransitionOnChange
+          >
+           
+            {children}
+          </ThemeProvider>
         </body>
       </html>
+      </ClerkProvider>
     </CopilotKit>
   );
 }
