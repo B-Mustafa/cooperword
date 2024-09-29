@@ -29,7 +29,7 @@ const BackgroundParticles: React.FC<ParticlesProps> = ({
     y: number;
   }
 
-  const MousePosition = (): MousePosition => {
+  const useMousePosition = (): MousePosition => {
     const [mousePosition, setMousePosition] = useState<MousePosition>({
       x: 0,
       y: 0,
@@ -58,14 +58,28 @@ const BackgroundParticles: React.FC<ParticlesProps> = ({
     const blue = hexInt & 255;
     return [red, green, blue];
   };
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
-  const circles = useRef<any[]>([]);
-  const mousePosition = MousePosition();
+  const circles = useRef<Circle[]>([]);
+  const mousePosition = useMousePosition();
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+  type Circle = {
+    x: number;
+    y: number;
+    translateX: number;
+    translateY: number;
+    size: number;
+    alpha: number;
+    targetAlpha: number;
+    dx: number;
+    dy: number;
+    magnetism: number;
+  };
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -105,19 +119,6 @@ const BackgroundParticles: React.FC<ParticlesProps> = ({
         mouse.current.y = y;
       }
     }
-  };
-
-  type Circle = {
-    x: number;
-    y: number;
-    translateX: number;
-    translateY: number;
-    size: number;
-    alpha: number;
-    targetAlpha: number;
-    dx: number;
-    dy: number;
-    magnetism: number;
   };
 
   const resizeCanvas = () => {
@@ -189,8 +190,7 @@ const BackgroundParticles: React.FC<ParticlesProps> = ({
 
   const drawParticles = () => {
     clearContext();
-    const particleCount = quantity;
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < quantity; i++) {
       const circle = circleParams();
       drawCircle(circle);
     }
