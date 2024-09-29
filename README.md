@@ -1,10 +1,11 @@
-# Event Management Application
+# COOPER WORD
 
-![Event Management Application](https://via.placeholder.com/800x400?text=Event+Management+App) <!-- Replace with your app's screenshot -->
+![COOPER WORD](https://ibb.co/6tQgTCX)
+![COOPER WORD](https://ibb.co/bBJt6TS)
 
 ## Table of Contents
 
-- [Event Management Application](#event-management-application)
+- [COOPER WORD](#cooper-word)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Features](#features)
@@ -20,7 +21,7 @@
 
 ## Overview
 
-The **Event Management Application** is a web-based tool designed to help users create, manage, and view events in a calendar format. Built using **React**, **Next.js**, and **TypeScript**, this application provides a user-friendly interface with intuitive functionality for effective event management.
+The **COOPER WORD** is a web-based tool designed to help users create, manage, and view events in a calendar format. Built using **React**, **Next.js**, and **TypeScript**, this application provides a user-friendly interface with intuitive functionality for effective event management.
 
 [Video Demo](https://youtube.com/)
 
