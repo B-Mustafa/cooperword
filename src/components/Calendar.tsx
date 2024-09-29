@@ -9,15 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { AddEvent } from "@/components/addEvent";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
-interface Event {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  priority: string;
-  description: string;
-}
+import { Event } from "@/lib/events.types";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -34,8 +26,8 @@ export const Calendar = () => {
     setIsAddEventOpen(true);
   };
 
-  const handleEventClick = (event: Event) => { // Specify Event type
-    setSelectedEvent({ ...event, id: String(event.id) }); // Convert id to string
+  const handleEventClick = (event: Event) => {
+    setSelectedEvent(event);
     setIsEventDetailsOpen(true);
   };
 
@@ -116,13 +108,13 @@ export const Calendar = () => {
               <div className="flex flex-wrap gap-x-2 text-xs items-center justify-center">
                 {getEventsForDate(date).map((event) => (
                   <div
-                    key={event.id}
+                    key={event.id} // Use id directly
                     className={`p-1 mt-1 rounded-full w-4 h-4 flex ${getPriorityClass(
                       event.priority
                     )} text-white cursor-pointer`}
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleEventClick(event);
+                      handleEventClick(event); // Pass event directly
                     }}
                   >
                     {/* {event.title} */}
@@ -144,7 +136,7 @@ export const Calendar = () => {
           </DialogHeader>
           <AddEvent
             onClose={() => setIsAddEventOpen(false)}
-            selectedDate={selectedDate ?? ""} // Default to empty string
+            selectedDate={selectedDate || ""} // Default to empty string
           />
         </DialogContent>
       </Dialog>
