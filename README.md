@@ -1,7 +1,7 @@
 # COOPER WORD
 
-![COOPER WORD](https://ibb.co/6tQgTCX)
-![COOPER WORD](https://ibb.co/bBJt6TS)
+![COOPER WORD]([https://ibb.co/6tQgTCX](https://ibb.co/6tQgTCX))
+![COOPER WORD]([https://ibb.co/bBJt6TS](https://ibb.co/bBJt6TS))
 
 ## Table of Contents
 
