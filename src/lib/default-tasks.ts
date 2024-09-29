@@ -8,6 +8,7 @@ export const defaultTasks: Task[] = [
     dueDate: "2024-09-30",
     status: TaskStatus.done,
     priority: "High",
+    reminderTimeInMinutes: 30,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const defaultTasks: Task[] = [
     dueDate: "2024-10-02",
     status: TaskStatus.done,
     priority: "Medium",
+    reminderTimeInMinutes: 30,
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ export const defaultTasks: Task[] = [
     dueDate: "2024-10-05",
     status: TaskStatus.todo,
     priority: "High",
+    reminderTimeInMinutes: 30,
   },
   {
     id: 4,
@@ -32,6 +35,7 @@ export const defaultTasks: Task[] = [
     dueDate: "2024-10-01",
     status: TaskStatus.todo,
     priority: "Low",
+    reminderTimeInMinutes: 30,
   },
   {
     id: 5,
@@ -40,5 +44,6 @@ export const defaultTasks: Task[] = [
     dueDate: "2024-10-03",
     status: TaskStatus.todo,
     priority: "Medium",
+    reminderTimeInMinutes: 30,
   },
 ];

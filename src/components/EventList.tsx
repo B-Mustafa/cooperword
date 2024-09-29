@@ -24,9 +24,7 @@ export function EventList() {
       <h1 className="text-2xl font-bold mb-4">📅 My Event Calendar</h1>
 
       <AddEvent
-        selectedDate={
-          selectedDate ? selectedDate.toISOString().split("T")[0] : undefined
-        }
+        selectedDate={selectedDate ? selectedDate.toISOString().split("T")[0] : undefined}
         onClose={() => {}}
       />
 
@@ -44,15 +42,12 @@ export function EventList() {
 
       {selectedDate && (
         <div className="mt-4">
-          <h2 className="text-xl font-bold">
-            Events on {selectedDate.toDateString()}:
-          </h2>
+          <h2 className="text-xl font-bold">Events on {selectedDate.toDateString()}:</h2>
           {eventsForSelectedDate.length > 0 ? (
             <ul className="list-disc ml-6">
               {eventsForSelectedDate.map((event) => (
                 <li key={event.id} className="mt-2">
-                  <strong>{event.title}</strong> - {event.description} at{" "}
-                  {event.time}
+                  <strong>{event.title}</strong> - {event.description} at {event.time} (Priority: {event.priority})
                 </li>
               ))}
             </ul>

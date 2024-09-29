@@ -12,7 +12,7 @@ export function AddEvent({ selectedDate, onClose }: { selectedDate?: string; onC
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addEvent(title, description, date, time, priority, );
+    addEvent(title, description, date, time, priority, reminderMinutes);
     setTitle("");
     setDescription("");
     setDate("");
@@ -60,7 +60,7 @@ export function AddEvent({ selectedDate, onClose }: { selectedDate?: string; onC
         className="p-2 border border-gray-300 rounded"
       />
       <select
-        value={reminderMinutes}
+        value={reminderMinutes || ""}
         onChange={(e) => setReminderMinutes(e.target.value ? parseInt(e.target.value, 10) : undefined)}
         className="p-2 border border-gray-300 rounded"
       >
