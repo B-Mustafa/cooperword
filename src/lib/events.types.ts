@@ -4,7 +4,7 @@ export interface Event {
     description: string;
     date: string; 
     time: string;
-    priority?: string; 
+    priority: string; 
     completed?: boolean;
     reminderMinutes?: number 
   }

@@ -1,7 +1,8 @@
-import clsx from "clsx";
+import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-const cn = (...args: any[]) => {
+// Use ClassValue[] for improved typing
+const cn = (...args: ClassValue[]) => {
   return twMerge(clsx(args));
 };
 

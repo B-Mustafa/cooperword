@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label"; // Ensure this component exists
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "lucide-react";
 import { motion } from "framer-motion";

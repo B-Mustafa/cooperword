@@ -6,9 +6,18 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"; 
+} from "@/components/ui/dialog";
 import { AddEvent } from "@/components/addEvent";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  priority: string;
+  description: string;
+}
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -16,17 +25,17 @@ export const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [isAddEventOpen, setIsAddEventOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<any | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isEventDetailsOpen, setIsEventDetailsOpen] = useState(false);
   const { events } = useTasks();
 
   const handleDateClick = (date: string) => {
     setSelectedDate(date);
-    setIsAddEventOpen(true); 
+    setIsAddEventOpen(true);
   };
 
-  const handleEventClick = (event: any) => {
-    setSelectedEvent(event);
+  const handleEventClick = (event: Event) => { // Specify Event type
+    setSelectedEvent({ ...event, id: String(event.id) }); // Convert id to string
     setIsEventDetailsOpen(true);
   };
 
@@ -35,15 +44,19 @@ export const Calendar = () => {
   };
 
   const handlePrevMonth = () => {
-    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+    );
   };
 
   const handleNextMonth = () => {
-    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+    );
   };
 
   const getEventsForDate = (date: string) => {
-    return events.filter(event => event.date === date);
+    return events.filter((event) => event.date === date);
   };
 
   const year = currentDate.getFullYear();
@@ -52,39 +65,47 @@ export const Calendar = () => {
 
   const getPriorityClass = (priority: string) => {
     switch (priority.toLowerCase()) {
-      case 'high':
-        return 'bg-red-600';
-      case 'medium':
-        return 'bg-blue-600';
-      case 'low':
-        return 'bg-green-600';
+      case "high":
+        return "bg-red-600";
+      case "medium":
+        return "bg-blue-600";
+      case "low":
+        return "bg-green-600";
       default:
-        return 'bg-gray-200';
+        return "bg-gray-200";
     }
   };
 
   return (
     <div className="calendar-container bg-black/20">
       <div className="flex justify-between mb-4">
-        <button onClick={handlePrevMonth} className="bg-blue-500 text-white p-2 rounded">
+        <button
+          onClick={handlePrevMonth}
+          className="bg-blue-500 text-white p-2 rounded"
+        >
           <ArrowLeft />
         </button>
         <h2 className="text-xl font-bold">
           {currentDate.toLocaleString("default", { month: "long" })} {year}
         </h2>
-        <button onClick={handleNextMonth} className="bg-blue-500 text-white p-2 rounded">
+        <button
+          onClick={handleNextMonth}
+          className="bg-blue-500 text-white p-2 rounded"
+        >
           <ArrowRight />
         </button>
       </div>
 
       <div className="grid grid-cols-7 gap-2 text-center">
-        {daysOfWeek.map(day => (
+        {daysOfWeek.map((day) => (
           <div key={day} className="font-bold">
             {day}
           </div>
         ))}
         {[...Array(daysInMonth)].map((_, index) => {
-          const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(index + 1).padStart(2, '0')}`;
+          const date = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+            index + 1
+          ).padStart(2, "0")}`;
           return (
             <div
               key={index}
@@ -92,11 +113,13 @@ export const Calendar = () => {
               onClick={() => handleDateClick(date)}
             >
               {index + 1}
-              <div className="flex flex-wrap gap-x-2 text-xs items-center justify-center ">
-                {getEventsForDate(date).map(event => (
+              <div className="flex flex-wrap gap-x-2 text-xs items-center justify-center">
+                {getEventsForDate(date).map((event) => (
                   <div
                     key={event.id}
-                    className={`p-1 mt-1 rounded-full w-4 h-4 flex  ${getPriorityClass(event.priority)} text-white cursor-pointer`}
+                    className={`p-1 mt-1 rounded-full w-4 h-4 flex ${getPriorityClass(
+                      event.priority
+                    )} text-white cursor-pointer`}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleEventClick(event);
@@ -114,12 +137,15 @@ export const Calendar = () => {
       <Dialog open={isAddEventOpen} onOpenChange={setIsAddEventOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Event on {selectedDate ?? ''}</DialogTitle>
+            <DialogTitle>Add Event on {selectedDate ?? ""}</DialogTitle>
             <DialogDescription>
               Please fill in the details for the event.
             </DialogDescription>
           </DialogHeader>
-          <AddEvent onClose={() => setIsAddEventOpen(false)} selectedDate={selectedDate ?? ''} />
+          <AddEvent
+            onClose={() => setIsAddEventOpen(false)}
+            selectedDate={selectedDate ?? ""} // Default to empty string
+          />
         </DialogContent>
       </Dialog>
 
@@ -128,10 +154,18 @@ export const Calendar = () => {
           <DialogHeader>
             <DialogTitle>{selectedEvent?.title}</DialogTitle>
             <DialogDescription>
-              <p><strong>Date:</strong> {selectedEvent?.date}</p>
-              <p><strong>Time:</strong> {selectedEvent?.time}</p>
-              <p><strong>Priority:</strong> {selectedEvent?.priority}</p>
-              <p><strong>Description:</strong> {selectedEvent?.description}</p>
+              <p>
+                <strong>Date:</strong> {selectedEvent?.date}
+              </p>
+              <p>
+                <strong>Time:</strong> {selectedEvent?.time}
+              </p>
+              <p>
+                <strong>Priority:</strong> {selectedEvent?.priority}
+              </p>
+              <p>
+                <strong>Description:</strong> {selectedEvent?.description}
+              </p>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

@@ -8,7 +8,7 @@ export type Task = {
   };
   
   export enum TaskStatus {
-    todo = "TODO",
+    todo = "INCOMPLETE",
     done = "DONE",
   }
   

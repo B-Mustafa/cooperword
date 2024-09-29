@@ -8,23 +8,30 @@ export function EventList() {
   const { events } = useTasks();
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const onDateChange = (value: Date | Date[], event: React.MouseEvent<HTMLButtonElement>) => {
-    if (Array.isArray(value)) return; // Prevent setting if multiple dates selected
-    setSelectedDate(value as Date); // Cast value to Date
+  const onDateChange = (value: Date | Date[]) => {
+    if (Array.isArray(value)) return;
+    setSelectedDate(value);
   };
 
   const eventsForSelectedDate = events.filter((event) => {
-    return selectedDate && event.date === selectedDate.toISOString().split("T")[0];
+    return (
+      selectedDate && event.date === selectedDate.toISOString().split("T")[0]
+    );
   });
 
   return (
     <main className="flex flex-col items-center justify-between p-8 md:p-24 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">📅 My Event Calendar</h1>
 
-      <AddEvent selectedDate={selectedDate ? selectedDate.toISOString().split("T")[0] : undefined} onClose={() => {}} />
+      <AddEvent
+        selectedDate={
+          selectedDate ? selectedDate.toISOString().split("T")[0] : undefined
+        }
+        onClose={() => {}}
+      />
 
       <Calendar
-        onChange={onDateChange}
+        onClickDay={onDateChange}
         value={selectedDate}
         tileContent={({ date }) => {
           const eventExists = events.some(
@@ -44,7 +51,8 @@ export function EventList() {
             <ul className="list-disc ml-6">
               {eventsForSelectedDate.map((event) => (
                 <li key={event.id} className="mt-2">
-                  <strong>{event.title}</strong> - {event.description} at {event.time}
+                  <strong>{event.title}</strong> - {event.description} at{" "}
+                  {event.time}
                 </li>
               ))}
             </ul>

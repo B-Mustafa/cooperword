@@ -4,7 +4,7 @@ import { useAuth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+// import { Button } from "./ui/button";
 import { Calendar, MessageCircle, Menu, X } from "lucide-react"; // Import Menu and X icons
 import { useState } from "react";
 
