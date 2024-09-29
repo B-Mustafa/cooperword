@@ -12,7 +12,7 @@ const LandingHero = () => {
                 <h1>
                     The Best AI Tool For
                 </h1>
-                <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-500 to-pink-600">
+                <div className="text-transparent bg-clip-text pb-2 bg-gradient-to-r from-purple-400 via-indigo-500 to-pink-600">
                     <TypeWriterComponent
                         options={{
                             strings: ['Event Mangement', 'Task Management',],

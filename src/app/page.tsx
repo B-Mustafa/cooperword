@@ -19,7 +19,8 @@ export default function Home() {
       <Divider />
       <Features />
       <Divider />
-      <div className="flex flex-row flex-wrap min-h-[30rem] p-2 items-end">
+        <h2 className="text-4xl font-bold text-white w-full text-center"> Pricing </h2>
+      <div className="flex flex-row flex-wrap min-h-[30rem] p-4 items-end">
         <PricingCard
           title="Basic"
           price="$199"

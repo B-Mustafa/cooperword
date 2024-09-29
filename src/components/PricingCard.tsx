@@ -20,7 +20,7 @@ export const PricingCard = ({
 }: PricingCardProps) => {
     return (
       <div
-        className={`flex flex-col gap-3 p-4 bg-zinc-950 m-3 grow rounded-lg relative border border-white ${
+        className={`flex flex-col gap-1 p-8 bg-zinc-950 m-3 flex-grow rounded-lg relative border border-white ${
           !popular ? "border-opacity-10" : ""
         }`}
       >
