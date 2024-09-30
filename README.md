@@ -24,9 +24,10 @@
 
 The **COOPER WORD** is a web-based tool designed to help users create, manage, and view events in a calendar format. Built using **React**, **Next.js**, and **TypeScript**, this application provides a user-friendly interface with intuitive functionality for effective event management.
 
+## Demo Part 1 & 2
+
 [![DEMO VIDEO](https://img.youtube.com/vi/Z5wQipy6GjU/0.jpg)](https://www.youtube.com/watch?v=Z5wQipy6GjU)
 
-Part-2
 [![Demo video](https://img.youtube.com/vi/SRBzNzywWY4/0.jpg)](https://youtu.be/SRBzNzywWY4?si=4OJ1oZoYrgo4rmgu)
 
 ## Features
