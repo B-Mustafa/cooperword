@@ -27,7 +27,7 @@ The **COOPER WORD** is a web-based tool designed to help users create, manage, a
 [![DEMO VIDEO](https://img.youtube.com/vi/Z5wQipy6GjU/0.jpg)](https://www.youtube.com/watch?v=Z5wQipy6GjU)
 
 Part-2
-[![Demo video](https://img.youtube.com/vi/SRBzNzywWY4)](https://youtu.be/SRBzNzywWY4?si=4OJ1oZoYrgo4rmgu)
+[![Demo video](https://img.youtube.com/vi/SRBzNzywWY4/0.jpg)](https://youtu.be/SRBzNzywWY4?si=4OJ1oZoYrgo4rmgu)
 
 ## Features
 
