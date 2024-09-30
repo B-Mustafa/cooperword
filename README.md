@@ -26,6 +26,9 @@ The **COOPER WORD** is a web-based tool designed to help users create, manage, a
 
 [![DEMO VIDEO](https://img.youtube.com/vi/Z5wQipy6GjU/0.jpg)](https://www.youtube.com/watch?v=Z5wQipy6GjU)
 
+Part-2
+[![Demo video](https://img.youtube.com/vi/SRBzNzywWY4)](https://youtu.be/SRBzNzywWY4?si=4OJ1oZoYrgo4rmgu)
+
 ## Features
 
 - **Interactive Calendar**: Navigate through months and select specific dates to view or add events easily.
@@ -48,6 +51,7 @@ The **COOPER WORD** is a web-based tool designed to help users create, manage, a
   - **Tailwind CSS**: A utility-first CSS framework for styling.
   - **React Icons**: A collection of beautiful SVG icons for use in React applications.
   - **ShadCn Hexta Ui**: A component library used in for Ui.
+  - **Resend Email**: used for sending emails with reminder
 
 ## Installation
 
